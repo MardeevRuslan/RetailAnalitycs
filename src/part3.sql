@@ -1,0 +1,16 @@
+-- Active: 1689044315190@@127.0.0.1@5433@retail
+-- ## Part 3. Ролевая модель
+
+CREATE ROLE Visitor;
+CREATE ROLE Administrator;
+
+GRANT SELECT ON ALL TABLES IN SCHEMA public TO Visitor;
+
+ALTER DEFAULT PRIVILEGES IN SCHEMA public 
+GRANT SELECT ON TABLES TO Visitor;
+
+ALTER DEFAULT PRIVILEGES IN SCHEMA public 
+GRANT SELECT, INSERT, UPDATE ON TABLES TO Administrator;
+
+SELECT * FROM pg_roles;
+-- GRANT Administrator TO postgres;
